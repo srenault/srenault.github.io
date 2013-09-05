@@ -9,7 +9,8 @@
         <header></header>
         <section id="content">
             <article class="post">
-  <p>There are a lot of attempts to replace Javascript by another language <a href="https://github.com/jashkenas/coffee-script/wiki/List-of-languages-that-compile-to-JS">[see here]</a>. One of the main reason to create a language that compile to Javascript is to bring static typing on client side. In 2012, Microsoft released a new language named Typescript that does this work.</p>
+  <h1 id="typescript">Typescript</h1>
+<p>There are a lot of attempts to replace Javascript by another language <a href="https://github.com/jashkenas/coffee-script/wiki/List-of-languages-that-compile-to-JS">[see here]</a>. One of the main reason to create a language that compile to Javascript is to bring static typing on client side. In 2012, Microsoft released a new language named Typescript that does this work.</p>
 <h2 id="why-typescript">Why Typescript ?</h2>
 <p>So, what’s make Typescript different from the others ?<br />I think people who are behind Typescript understand one important thing about the front-end developpers: they love Javascript and they don’t want it to be replaced by another completely different language. That why they decided to create something on top of Javascript. More exactly, a superset of Javascript.<br />What does it mean ? It means that Javascript is Typescript compliant and Typescript brings some new features (static typing) to Javascript.</p>
 <h3 id="how-does-it-work">How does it work ?</h3>
@@ -26,9 +27,9 @@ error TS2094: The property 'App' does not exist on value of type 'Window'.</code
 <p>Regarding to the declaration file “lib.d.ts”, this one is provided with the Typescript compiler and has the hard mission to define all ECMAScript APIs. More exactly, it defines the ECMAScript specifically for several versions of Internet Explorer. So, Typescript compiler will throw you an error whenever you use a feature that is unavailable in IE but not necessarily in others browsers. I can understand that it would be very hard (even impossible ?) to maintain a declaration file that define ECMAScript for each browser and each version of them. That why, I have some doubts about the use of this file.</p>
 <p>Another annoying point is that we don’t know where to get a declaration file for a specific version of one Javascript library. One anwser could be to create a kind of package manager devote to declaration files. It would be very cool to have:</p>
 <pre><code>tdm install underscore //Stand for &quot;Typescript declaration files manager&quot;</code></pre>
-<h2 id="typescript-in-the-real-world.">Typescript in the real world.</h2>
+<h2 id="typescript-in-the-real-world">Typescript in the real world</h2>
 <p>Despite of theses drawbacks, I think I found a way to make Typescript more confortable to use. That’s what we are talking about from now !</p>
-<h3 id="environnement-developpment.">Environnement developpment.</h3>
+<h3 id="environnement-developpment">Environnement developpment</h3>
 <p>Having a cosy environnement developpment is very important to be effective. But it’s more a personnal choice that an universal rule. Nevertheless, I give you below a description of my own environnement:</p>
 <ul>
 <li>I don’t use Visual Studio.</li>
@@ -40,7 +41,7 @@ error TS2094: The property 'App' does not exist on value of type 'Window'.</code
 <h4 id="grunt-project-skeletons">Grunt project skeletons</h4>
 <p>My “<a href="https://github.com/srenault/typescript-project-skeletons">typescript-project-skeletons</a>” repository presents two kinds of Typescript projects configuration. The <a href="https://github.com/srenault/typescript-project-skeletons/tree/master/no-server">first one</a> is a simple static project (HTML, Typescript and CSS). The <a href="https://github.com/srenault/typescript-project-skeletons/tree/master/with-play">second one</a> offers one valid way to intergrate Typescript code into a play framework project.<br />I suggest you take a moment to understand how theses projects are organized and build.</p>
 <p><em>Note: I aware of some <a href="https://github.com/mumoshu/play2-typescript">playframework sbt plugins</a> that compile Typescript, but I prefer use some front technology like “grunt” to manage my “front” base code.</em></p>
-<h3 id="clever-type-checking.">Clever type checking.</h3>
+<h3 id="clever-type-checking">Clever type checking</h3>
 <p>My idea is to make a compromise and use type checking only on the code I write. I don’t want to be bothered by any outdated declaration files. Here how I proceed to get whant I want:</p>
 <ul>
 <li><p>Declare external Javascript libraries as “any” type. That’s done like this:</p>
@@ -50,9 +51,9 @@ _.anything; //No compile error.</code></pre></li>
 <li><p>Don’t use the default provided “lib.d.ts” declaration file. The <a href="https://github.com/k-maru/grunt-typescript">grunt-typescript</a> plugin offers an option named “nolib”. When set to “true”, the declaration file “lib.d.ts” is not used during the Typescript compilation.</p></li>
 <li><p>Like external Javascript libraries, declare “window” object and its properties as “any” type. This can be done easily thanks to this <a href="../misc/typescript-tool.html">tool</a>. This one will generate for you the corresponding declaration file.</p></li>
 </ul>
-<h3 id="functionnal-programming.">Functionnal programming.</h3>
+<h3 id="functionnal-programming">Functionnal programming</h3>
 <p>Typescript can give more than just typing to Javascript. My idea is to provide to Typescript developper a <em>core set of functionnal libraries</em>. I already <a href="https://github.com/srenault/typescript-fp">started</a> to create a functionnal library that offer immutable structure like “List” and “Option”. It’s just an inception so, feel free to help me on this task.</p>
-<h2 id="the-end.">The End.</h2>
+<h2 id="the-end">The End</h2>
 <p>I see Typescript as a real alternative to create front-end application. The fact that it is a superset of Javascript is its biggest strength. In my opinion, It has more chance to be adopted by front-end developpers than any others languages that compile to Javascript. Good luck !</p>
 </article>
 
