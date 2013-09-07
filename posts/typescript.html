@@ -16,7 +16,7 @@
 <h3 id="how-does-it-work">How does it work ?</h3>
 <p>In order to type all the existing Javascript code, Typescript introduce something called “declaration files” (*.d.ts). A declaration file is a file where you transpose your Javascript code into Typescript definitions. This means there are no implementation, just definitions of Javascript code into Typescript modules, functions, objects and interfaces. In that way, Typescript is able to perform type checking on Javascript code. There already are many declaration files that have been written for many popular Javascript libraries. You can find a lot of them on this <a href="https://github.com/borisyankov/DefinitelyTyped">repository</a>. I invite you to to look at one of theses file.<br />In order to use a declaration file inside your project, you have to use this syntax:</p>
 <pre><code>///&lt;reference path=&quot;./underscore.d.ts&quot;/&gt;</code></pre>
-<p>Something else you have to know about declaration files is that Typescript use by default a declaration file named “lib.d.ts”. It’s role is to type all the ECMAScript APIs (window, Object, Function etc…). It’s means that now “window” object is typed (Window interface), Typescript will not allow you to write this code:</p>
+<p>Something else you have to know about declaration files is that Typescript use by default a declaration file named “lib.d.ts”. It’s role is to type all the ECMAScript APIs (window, Object, Function etc…). It’s means that “window” object is typed (Window interface), Typescript will not allow you to write this code:</p>
 <pre><code>window.App = {};
 
 error TS2094: The property 'App' does not exist on value of type 'Window'.</code></pre>
