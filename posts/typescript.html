@@ -4,31 +4,34 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Typescript</title>
         <link rel="stylesheet" type="text/css" href="../css/default.css" />
+        <link rel="stylesheet" type="text/css" href="../css/font/fontello.css" />
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+        <script src="../scripts/main.js" type="text/javascript"></script>
     </head>
     <body>
         <header></header>
         <section id="content">
             <article class="post">
   <h1 id="typescript">Typescript</h1>
-<p>There are a lot of attempts to replace Javascript by another language <a href="https://github.com/jashkenas/coffee-script/wiki/List-of-languages-that-compile-to-JS">[see here]</a>. One of the main reason to create a language that compile to Javascript is to bring static typing on client side. In 2012, Microsoft released a new language named Typescript that does this work.</p>
+<p>There are a lot of attempts to replace Javascript by another language <a href="https://github.com/jashkenas/coffee-script/wiki/List-of-languages-that-compile-to-JS">[see here]</a>. One of the main reason to create a language that compiles to Javascript is to bring static typing on client side. In 2012, Microsoft released a new language named Typescript that does this work.</p>
 <h2 id="why-typescript">Why Typescript ?</h2>
 <p>So, what’s make Typescript different from the others ?<br />I think people who are behind Typescript understand one important thing about the front-end developpers: they love Javascript and they don’t want it to be replaced by another completely different language. That why they decided to create something on top of Javascript. More exactly, a superset of Javascript.<br />What does it mean ? It means that Javascript is Typescript compliant and Typescript brings some new features (static typing) to Javascript.</p>
 <h3 id="how-does-it-work">How does it work ?</h3>
-<p>In order to type all the existing Javascript code, Typescript introduce something called “declaration files” (*.d.ts). A declaration file is a file where you transpose your Javascript code into Typescript definitions. This means there are no implementation, just definitions of Javascript code into Typescript modules, functions, objects and interfaces. In that way, Typescript is able to perform type checking on Javascript code. There already are many declaration files that have been written for many popular Javascript libraries. You can find a lot of them on this <a href="https://github.com/borisyankov/DefinitelyTyped">repository</a>. I invite you to to look at one of theses file.<br />In order to use a declaration file inside your project, you have to use this syntax:</p>
+<p>In order to type all the existing Javascript code, Typescript introduce something called “declaration files” (*.d.ts). A declaration file is a file where you transpose your Javascript code into Typescript definitions. This means there are no implementation, just definitions of Javascript code into Typescript modules, functions, objects and interfaces. In that way, Typescript is able to perform type checking on Javascript code. There already are many declaration files that have been written for many popular Javascript libraries. You can find a lot of them on this <a href="https://github.com/borisyankov/DefinitelyTyped">repository</a>. I invite you to to look at one of these files.<br />In order to use a declaration file inside your project, you have to use this syntax:</p>
 <pre><code>///&lt;reference path=&quot;./underscore.d.ts&quot;/&gt;</code></pre>
-<p>Something else you have to know about declaration files is that Typescript use by default a declaration file named “lib.d.ts”. It’s role is to type all the ECMAScript APIs (window, Object, Function etc…). It’s means that “window” object is typed (Window interface), Typescript will not allow you to write this code:</p>
+<p>Something else you have to know about declaration files is that Typescript use by default a declaration file named “lib.d.ts”. Its role is to type all the ECMAScript APIs (window, Object, Function etc…). It’s means that “window” object is typed (Window interface) - Typescript will not allow you to write this code:</p>
 <pre><code>window.App = {};
 
 error TS2094: The property 'App' does not exist on value of type 'Window'.</code></pre>
 <p>The error is quite clear. You can’t add dynamically a new property to a typed object. However, there is a trick that does the job:</p>
 <pre><code>window['App'] = {};</code></pre>
 <h2 id="cool-but">Cool but…</h2>
-<p>I think there are some problems with the use of theses declarations files. The Javascript world is huge. One day, you will want to use a Javascript library that don’t have any declaration files. If you want to have type checking on this library, you will have no choice that write it yourself for <em>different versions</em> of the library. Indeed, each time you release a new version of your library, you have to update the declaration file. That can be very tedious.</p>
-<p>Regarding to the declaration file “lib.d.ts”, this one is provided with the Typescript compiler and has the hard mission to define all ECMAScript APIs. More exactly, it defines the ECMAScript specifically for several versions of Internet Explorer. So, Typescript compiler will throw you an error whenever you use a feature that is unavailable in IE but not necessarily in others browsers. I can understand that it would be very hard (even impossible ?) to maintain a declaration file that define ECMAScript for each browser and each version of them. That why, I have some doubts about the use of this file.</p>
+<p>I think there are some problems with the use of these declarations files. The Javascript world is huge. One day, you will want to use a Javascript library that don’t have any declaration files. If you want to have type checking on this library, you will have no choice than write it yourself for <em>different versions</em> of the library. Indeed, each time you release a new version of your library, you have to update the declaration file. That can be very tedious.</p>
+<p>Regarding to the declaration file “lib.d.ts”, this one is provided with the Typescript compiler and has the hard mission to define all ECMAScript APIs. More exactly, it defines the ECMAScript specifically for several versions of Internet Explorer. So, Typescript compiler will throw you an error whenever you use a feature that is unavailable in IE but not necessarily in others browsers. I can understand that it would be very hard (even impossible ?) to maintain a declaration file that define ECMAScript for each browser and each version of them. That’s why, I have some doubts about the use of this file.</p>
 <p>Another annoying point is that we don’t know where to get a declaration file for a specific version of one Javascript library. One anwser could be to create a kind of package manager devote to declaration files. It would be very cool to have:</p>
 <pre><code>tdm install underscore //Stand for &quot;Typescript declaration files manager&quot;</code></pre>
 <h2 id="typescript-in-the-real-world">Typescript in the real world</h2>
-<p>Despite of theses drawbacks, I think I found a way to make Typescript more confortable to use. That’s what we are talking about from now !</p>
+<p>Despite of these drawbacks, I think I found a way to make Typescript more confortable to use. That’s what we are talking about from now !</p>
 <h3 id="environnement-developpment">Environnement developpment</h3>
 <p>Having a cosy environnement developpment is very important to be effective. But it’s more a personnal choice that an universal rule. Nevertheless, I give you below a description of my own environnement:</p>
 <ul>
@@ -39,22 +42,22 @@ error TS2094: The property 'App' does not exist on value of type 'Window'.</code
 <li>I use grunt combined with <a href="https://github.com/k-maru/grunt-typescript">grunt-typescript</a>, <a href="https://github.com/gruntjs/grunt-contrib-watch">grunt-contrib-watch</a> and others plugins to build my Typescript base code.</li>
 </ul>
 <h4 id="grunt-project-skeletons">Grunt project skeletons</h4>
-<p>My “<a href="https://github.com/srenault/typescript-project-skeletons">typescript-project-skeletons</a>” repository presents two kinds of Typescript projects configuration. The <a href="https://github.com/srenault/typescript-project-skeletons/tree/master/no-server">first one</a> is a simple static project (HTML, Typescript and CSS). The <a href="https://github.com/srenault/typescript-project-skeletons/tree/master/with-play">second one</a> offers one valid way to intergrate Typescript code into a play framework project.<br />I suggest that you take a moment to understand how theses projects are organized and build.</p>
-<p><em>Note: I aware of some <a href="https://github.com/mumoshu/play2-typescript">playframework sbt plugins</a> that compile Typescript, but I prefer use some front technology like “grunt” to manage my “front” base code.</em></p>
+<p>My “<a href="https://github.com/srenault/typescript-project-skeletons">typescript-project-skeletons</a>” repository presents two kinds of Typescript projects configuration. The <a href="https://github.com/srenault/typescript-project-skeletons/tree/master/no-server">first one</a> is a simple static project (HTML, Typescript and CSS). The <a href="https://github.com/srenault/typescript-project-skeletons/tree/master/with-play">second one</a> offers one valid way to intergrate Typescript code into a play framework project.<br />I suggest that you take a moment to understand how these projects are organized and built.</p>
+<p><em>Note: I aware of some <a href="https://github.com/mumoshu/play2-typescript">playframework sbt plugins</a> that compiles Typescript, but I prefer use some front technology like “grunt” to manage my “front” base code.</em></p>
 <h3 id="clever-type-checking">Clever type checking</h3>
-<p>My idea is to make a compromise and use type checking only on the code I write. I don’t want to be bothered by any outdated declaration files. Here how I proceed to get whant I want:</p>
+<p>My idea is to make a compromise and use type checking only on the code I write. I don’t want to be bothered by any outdated declaration files. Here how I proceed to get what I want:</p>
 <ul>
-<li><p>Declare external Javascript libraries as “any” type. That’s done like this:</p>
+<li><p>Declare external Javascript libraries as “any” type:</p>
 <pre><code>declare var _: any;
-_.anything; //No compile error.</code></pre></li>
-<li><p>Don’t use any declaration files for external Javascript libraries.</p></li>
+_.anything;  //No compile error.</code></pre></li>
+<li><p>Don’t use any declaration files come from external Javascript libraries.</p></li>
 <li><p>Don’t use the default provided “lib.d.ts” declaration file. The <a href="https://github.com/k-maru/grunt-typescript">grunt-typescript</a> plugin offers an option named “nolib”. When set to “true”, the declaration file “lib.d.ts” is not used during the Typescript compilation.</p></li>
 <li><p>Like external Javascript libraries, declare “window” object and its properties as “any” type. This can be done easily by using this <a href="../misc/typescript-tool.html">script</a>.</p></li>
 </ul>
 <h3 id="functionnal-programming">Functionnal programming</h3>
-<p>Typescript can give more than just typing to Javascript. My idea is to provide to Typescript developper a <em>core set of functionnal libraries</em>. I already <a href="https://github.com/srenault/typescript-fp">started</a> to create a functionnal library that offer immutable structure like “List” and “Option”. It’s just an inception so, feel free to help me on this task.</p>
+<p>Typescript can give more than just add typing to Javascript. My idea is to provide to Typescript developper a <em>core set of functionnal libraries</em>. I already <a href="https://github.com/srenault/typescript-fp">started</a> to create a functionnal library that offers immutable structure like “List” and “Option”. It’s just an inception so, feel free to help me on this task.</p>
 <h2 id="the-end">The End</h2>
-<p>I see Typescript as a real alternative to create front-end application. The fact that it is a superset of Javascript is its biggest strength. In my opinion, It has more chance to be adopted by front-end developpers than any others languages that compile to Javascript. Good luck !</p>
+<p>I see in Typescript a real alternative to create front-end application. The fact that it is a superset of Javascript (and close to ECMAScript 6) make it very attractive. In my opinion, It has more chance to be adopted by front-end developpers than any others languages that compiles to Javascript. Good luck !</p>
 </article>
 
 <section id="comments">
@@ -75,6 +78,15 @@ _.anything; //No compile error.</code></pre></li>
 </section>
 
         </section>
-        <footer></footer>
+        <footer>
+          <div id="twitter">
+            <a class="twitter-timeline" href="https://twitter.com/srenaultcontact" data-widget-id="377129342704177153"></a>
+          </div>
+          <a class="home" href="../index.html"></a>
+          <a class="contact-me" href="#contactme">Contact me</a>
+        </footer>
+
+        <!-- Twitter -->
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
     </body>
 </html>
