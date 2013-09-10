@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Typescript</title>
+        <title>What is Typescript and How can we use it ?</title>
         <link rel="stylesheet" type="text/css" href="../css/default.css" />
         <link rel="stylesheet" type="text/css" href="../css/font/fontello.css" />
         <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
@@ -29,7 +29,7 @@ error TS2094: The property 'App' does not exist on value of type 'Window'.</code
 <p>I think there are some problems with the use of these declarations files. The Javascript world is huge. One day, you will want to use a Javascript library that don’t have any declaration files. If you want to have type checking on this library, you will have no choice than write it yourself for <em>different versions</em> of the library. Indeed, each time you release a new version of your library, you have to update the declaration file. That can be very tedious.</p>
 <p>Regarding to the declaration file “lib.d.ts”, this one is provided with the Typescript compiler and has the hard mission to define all ECMAScript APIs. More exactly, it defines the ECMAScript specifically for several versions of Internet Explorer. So, Typescript compiler will throw you an error whenever you use a feature that is unavailable in IE but not necessarily in others browsers. I can understand that it would be very hard (even impossible ?) to maintain a declaration file that define ECMAScript for each browser and each version of them. That’s why, I have some doubts about the use of this file.</p>
 <p>Another annoying point is that we don’t know where to get a declaration file for a specific version of one Javascript library. One anwser could be to create a kind of package manager devote to declaration files. It would be very cool to have:</p>
-<pre><code>tdm install underscore //Stand for &quot;Typescript declaration files manager&quot;</code></pre>
+<pre><code>tdm install underscore</code></pre>
 <h2 id="typescript-in-the-real-world">Typescript in the real world</h2>
 <p>Despite of these drawbacks, I think I found a way to make Typescript more confortable to use. That’s what we are talking about from now !</p>
 <h3 id="environnement-developpment">Environnement developpment</h3>
@@ -57,7 +57,7 @@ _.anything;  //No compile error.</code></pre></li>
 <h3 id="functionnal-programming">Functionnal programming</h3>
 <p>Typescript can give more than just add typing to Javascript. My idea is to provide to Typescript developper a <em>core set of functionnal libraries</em>. I already <a href="https://github.com/srenault/typescript-fp">started</a> to create a functionnal library that offers immutable structure like “List” and “Option”. It’s just an inception so, feel free to help me on this task.</p>
 <h2 id="the-end">The End</h2>
-<p>I see in Typescript a real alternative to create front-end application. The fact that it is a superset of Javascript (and close to ECMAScript 6) make it very attractive. In my opinion, It has more chance to be adopted by front-end developpers than any others languages that compiles to Javascript. Good luck !</p>
+<p>I see in Typescript a real alternative to create front-end application. The fact that it is a superset of Javascript make it very attractive. In my opinion, It has more chance to be adopted by front-end developpers than any others languages that compiles to Javascript. Good luck !</p>
 </article>
 
 <section id="comments">
