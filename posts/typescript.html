@@ -27,13 +27,13 @@ error TS2094: The property 'App' does not exist on value of type 'Window'.</code
 <pre><code>window['App'] = {};</code></pre>
 <h2 id="cool-but">Cool but…</h2>
 <p>I think there are some problems with the use of these declarations files. The Javascript world is huge. One day, you will want to use a Javascript library that don’t have any declaration files. If you want to have type checking on this library, you will have no choice than write it yourself for <em>different versions</em> of the library. Indeed, each time you release a new version of your library, you have to update the declaration file. That can be very tedious.</p>
-<p>Regarding to the declaration file “lib.d.ts”, this one is provided with the Typescript compiler and has the hard mission to define all ECMAScript APIs. More exactly, it defines the ECMAScript specifically for several versions of Internet Explorer. So, Typescript compiler will throw you an error whenever you use a feature that is unavailable in IE but not necessarily in others browsers. I can understand that it would be very hard (even impossible ?) to maintain a declaration file that define ECMAScript for each browser and each version of them. That’s why, I have some doubts about the use of this file.</p>
+<p>Regarding to the declaration file “lib.d.ts”, this one is provided with the Typescript compiler and has the hard mission to define all ECMAScript APIs. More exactly, it defines the ECMAScript specifically for several versions of Internet Explorer. So, Typescript compiler will throw you an error whenever you use a feature that is unavailable in IE but not necessarily in others browsers. I can understand that it would be very hard (even impossible ?) to maintain a declaration file that defines ECMAScript for each browser and each version of them. That’s why, I have some doubts about the use of this file.</p>
 <p>Another annoying point is that we don’t know where to get a declaration file for a specific version of one Javascript library. One anwser could be to create a kind of package manager devote to declaration files. It would be very cool to have:</p>
 <pre><code>tdm install underscore</code></pre>
 <h2 id="typescript-in-the-real-world">Typescript in the real world</h2>
-<p>Despite of these drawbacks, I think I found a way to make Typescript more confortable to use. That’s what we are talking about from now !</p>
-<h3 id="environnement-developpment">Environnement developpment</h3>
-<p>Having a cosy environnement developpment is very important to be effective. But it’s more a personnal choice that an universal rule. Nevertheless, I give you below a description of my own environnement:</p>
+<p>Despite these drawbacks, I think I found a way to make Typescript more confortable to use. That’s what we are talking about from now !</p>
+<h3 id="environnement-development">Environnement development</h3>
+<p>Having a cosy environnement development is very important to be effective. But it’s more a personal choice that an universal rule. Nevertheless, I give you below a description of my own environnement:</p>
 <ul>
 <li>I don’t use Visual Studio.</li>
 <li>I don’t care about autocompleting.</li>
@@ -45,7 +45,7 @@ error TS2094: The property 'App' does not exist on value of type 'Window'.</code
 <p>My “<a href="https://github.com/srenault/typescript-project-skeletons">typescript-project-skeletons</a>” repository presents two kinds of Typescript projects configuration. The <a href="https://github.com/srenault/typescript-project-skeletons/tree/master/no-server">first one</a> is a simple static project (HTML, Typescript and CSS). The <a href="https://github.com/srenault/typescript-project-skeletons/tree/master/with-play">second one</a> offers one valid way to intergrate Typescript code into a play framework project.<br />I suggest that you take a moment to understand how these projects are organized and built.</p>
 <p><em>Note: I aware of some <a href="https://github.com/mumoshu/play2-typescript">playframework sbt plugins</a> that compiles Typescript, but I prefer use some front technology like “grunt” to manage my “front” base code.</em></p>
 <h3 id="clever-type-checking">Clever type checking</h3>
-<p>My idea is to make a compromise and use type checking only on the code I write. I don’t want to be bothered by any outdated declaration files. Here how I proceed to get what I want:</p>
+<p>My idea is to make a compromise and use type checking only on the code I write. I don’t want to be bothered by any outdated declaration files. Here is how I proceed to get what I want:</p>
 <ul>
 <li><p>Declare external Javascript libraries as “any” type:</p>
 <pre><code>declare var _: any;
