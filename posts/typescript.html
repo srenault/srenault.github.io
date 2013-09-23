@@ -30,6 +30,7 @@ error TS2094: The property 'App' does not exist on value of type 'Window'.</code
 <p>Regarding to the declaration file “lib.d.ts”, this one is provided with the Typescript compiler and has the hard mission to define all ECMAScript APIs. More exactly, it defines the ECMAScript specifically for several versions of Internet Explorer. So, Typescript compiler will throw you an error whenever you use a feature that is unavailable in IE but not necessarily in others browsers. I can understand that it would be very hard (even impossible ?) to maintain a declaration file that defines ECMAScript for each browser and each version of them. That’s why, I have some doubts about the use of this file.</p>
 <p>Another annoying point is that we don’t know where to get a declaration file for a specific version of one Javascript library. One anwser could be to create a kind of package manager devote to declaration files. It would be very cool to have:</p>
 <pre><code>tdm install underscore</code></pre>
+<p><strong>UPDATE</strong>: Someone already created a package manager for declaration files: <a href title="https://github.com/DefinitelyTyped/tsd">tsdpm</a>.</p>
 <h2 id="typescript-in-the-real-world">Typescript in the real world</h2>
 <p>Despite these drawbacks, I think I found a way to make Typescript more confortable to use. That’s what we are talking about from now !</p>
 <h3 id="environnement-development">Environnement development</h3>
